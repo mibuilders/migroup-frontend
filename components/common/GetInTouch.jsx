@@ -1,0 +1,50 @@
+import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { fadeIn } from "../common/Animation";
+import GetIntouchForm from "../Form/GetIntouchForm";
+
+const GetInTouch = () => {
+  const ref = useRef(null);
+
+  return (
+    <section className="relative items-center w-full px-6 py-0 pb-8 align-middle home_testimonials bg-primary-color xl:px-32 md:py-20 ">
+      <div className="absolute top-0 left-0">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="xl:h-[800px] xl:w-[800px] w-full h-full"
+          viewBox="0 0 887 1052"
+          fill="none"
+        >
+          <path
+            opacity="0.05"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M374.413 552.286L617.841 792.033L547.877 761.415C502.487 790.589 456.519 811.097 409.973 820.918L421.826 766.614L491.501 736.862L438.884 713.754L374.413 552.286ZM360.825 0V489.893C396.096 417.68 421.248 349.222 426.452 288.852C425.874 287.119 425.296 285.386 424.428 283.653C445.533 289.43 467.505 302.428 493.525 317.738L547.877 287.119C498.729 257.945 451.893 238.592 407.082 230.215C386.266 158.869 371.522 81.4563 360.825 0ZM52.6364 579.149L112.192 588.681C121.155 616.411 131.852 641.83 145.151 663.494L167.701 611.789L333.938 548.242L89.0639 792.9L119.42 722.997C91.0876 679.092 68.2482 631.72 52.6364 579.149ZM356.777 560.085V1052L300.69 824.673C246.627 808.498 200.37 788.278 164.81 762.859L220.319 735.707L287.102 769.214L286.524 766.903C277.273 713.176 311.966 647.029 356.777 560.085ZM-172 526.289H320.35C237.954 486.716 178.109 454.365 111.325 462.453C119.709 438.189 130.406 413.925 143.127 389.662L118.842 334.202C90.7985 367.709 67.67 414.792 49.7453 476.029L-172 526.289ZM592.4 336.802L660.34 484.405L599.049 470.829C589.798 437.9 579.101 413.348 567.247 395.15L546.432 443.388L372.678 509.824L626.514 257.945L592.4 336.802ZM158.161 290.585C202.972 263.433 249.229 240.903 297.51 223.572L293.463 279.031C269.467 291.741 242.58 303.295 218.873 316.293L270.623 338.246L335.672 505.78L84.149 258.523L158.161 290.585ZM591.532 598.213C584.594 617.566 574.764 636.919 566.669 655.984L588.93 717.22C615.817 673.315 638.079 628.254 652.245 581.46C725.678 562.684 807.785 547.086 887 530.044L388.001 528.311C461.723 567.306 531.109 595.613 591.532 598.213Z"
+            fill="#AD843E"
+          />
+        </svg>
+      </div>
+
+      <div className="flex flex-col items-center justify-center w-full align-middle xl:flex-row md:flex-col lg:flex-col">
+        <div className="xl:text-[5rem] flex gap-2 py-6 xl:py-0 justify-center  text-center lg:text-[4rem] text-[2rem] capitalize font-[500] AriensNobela">
+          <motion.div
+            ref={ref}
+            data-splitting=""
+            variants={fadeIn("left", 0.2)}
+            initial={"hidden"}
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.2 }}
+          >
+            <span className="text-secondary-color heading-line">Get In</span>
+          </motion.div>
+          <span className="text-white ">Touch</span>
+        </div>
+      </div>
+      <div className="relative flex flex-col items-center justify-center w-full mt-0 align-middle xl:flex-row lg:mt-14 md:flex-col lg:flex-col">
+        <GetIntouchForm />
+      </div>
+    </section>
+  );
+};
+
+export default GetInTouch;
