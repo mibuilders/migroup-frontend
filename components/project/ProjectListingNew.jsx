@@ -93,11 +93,10 @@ const ProjectListingNew = ({ title, projectType }) => {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 mt-8 md:mt-0 text-lg font-semibold capitalize transition-all ${
-                  activeTab === tab
-                    ? "text-secondary-color border-b-2 border-secondary-color"
-                    : "text-white"
-                }`}
+                className={`px-6 py-2 mt-8 md:mt-0 text-lg font-semibold capitalize transition-all ${activeTab === tab
+                  ? "text-secondary-color border-b-2 border-secondary-color"
+                  : "text-white"
+                  }`}
               >
                 {tab}
               </button>
@@ -121,25 +120,23 @@ const ProjectListingNew = ({ title, projectType }) => {
                       project?.attributes?.projectListing?.projectThumbnail
                         ?.data?.attributes?.alternativeText
                         ? project?.attributes?.projectListing?.projectThumbnail
-                            ?.data?.attributes?.alternativeText
+                          ?.data?.attributes?.alternativeText
                         : "project"
                     }
-                    className={` relative lg:h-[26.042vw] object-cover ${
-                      activeTab.includes("Upcoming") && "blur-md"
-                    }`}
+                    className={` relative lg:h-[26.042vw] object-cover ${activeTab.includes("Upcoming") && "blur-md"
+                      }`}
                   />
                 </div>
                 <h5 className="text-secondary-color lg:text-[2.083vw] text-center mt-3 lg:mt-[1.25vw]">
                   {project?.attributes?.projectTitle}
                 </h5>
-                {activeTab.includes("Ongoing") && (
+                {["Ongoing", "Completed"].includes(activeTab) && (
                   <div className=" lg:mt-[1.25vw] mt-3 flex justify-center">
                     <a
-                      href={`/projects/${
-                        projectType == "Commercial"
-                          ? "commercial"
-                          : "residential"
-                      }/${project?.attributes?.projectUrl}`}
+                      href={`/projects/${projectType == "Commercial"
+                        ? "commercial"
+                        : "residential"
+                        }/${project?.attributes?.projectUrl}`}
                     >
                       <Buttons text={"Know More"} />
                     </a>

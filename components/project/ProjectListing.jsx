@@ -91,11 +91,10 @@ const ProjectListing = ({ title, projectType }) => {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-2 mt-8 md:mt-0 text-lg font-semibold capitalize transition-all ${
-                    activeTab === tab
-                      ? "text-secondary-color border-b-2 border-secondary-color"
-                      : "text-white"
-                  }`}
+                  className={`px-6 py-2 mt-8 md:mt-0 text-lg font-semibold capitalize transition-all ${activeTab === tab
+                    ? "text-secondary-color border-b-2 border-secondary-color"
+                    : "text-white"
+                    }`}
                 >
                   {tab}
                 </button>
@@ -110,9 +109,8 @@ const ProjectListing = ({ title, projectType }) => {
           filteredProjects.map((project, index) => (
             <div
               key={`residentialproject${index}`}
-              className={`feature_project flex flex-1 items-center ${
-                index % 2 === 0 ? "xl:flex-row" : "xl:flex-row-reverse"
-              } lg:flex-row flex-col w-full overflow-hidden md:mb-10`}
+              className={`feature_project flex flex-1 items-center ${index % 2 === 0 ? "xl:flex-row" : "xl:flex-row-reverse"
+                } lg:flex-row flex-col w-full overflow-hidden md:mb-10`}
             >
               {/* Left Section: Image */}
               <div className="flex-[0.6]   flex justify-center lg:py-20 xl:pt-20 pt-0 xl:pb-10">
@@ -131,12 +129,11 @@ const ProjectListing = ({ title, projectType }) => {
                       project?.attributes?.projectListing?.projectThumbnail
                         ?.data?.attributes?.alternativeText
                         ? project?.attributes?.projectListing?.projectThumbnail
-                            ?.data?.attributes?.alternativeText
+                          ?.data?.attributes?.alternativeText
                         : "project"
                     }
-                    className={`h-full md:w-[500px] lg:w-full xl:w-full w-full object-contain ${
-                      activeTab === "Upcoming" ? "blur-md" : ""
-                    }`}
+                    className={`h-full md:w-[500px] lg:w-full xl:w-full w-full object-contain ${activeTab === "Upcoming" ? "blur-md" : ""
+                      }`}
                   />
                 </div>
               </div>
@@ -158,7 +155,7 @@ const ProjectListing = ({ title, projectType }) => {
                           project?.attributes?.projectListing?.logo?.data
                             ?.attributes?.alternativeText
                             ? project?.attributes?.projectListing?.logo?.data
-                                ?.attributes?.alternativeText
+                              ?.attributes?.alternativeText
                             : "logo"
                         }
                         className="h-auto w-[150px] object-contain"
@@ -180,20 +177,19 @@ const ProjectListing = ({ title, projectType }) => {
                       </div>
                     )}
                   </h3>
-                  {}
+                  { }
                   {project?.attributes?.projectListing?.shortDescription && (
                     <p className="text-lg font-medium leading-6 text-white xl:leading-8">
                       {project?.attributes?.projectListing?.shortDescription}
                     </p>
                   )}
-                  {activeTab.includes("Ongoing") && (
+                  {["Ongoing", "Completed"].includes(activeTab) && (
                     <div className="pt-10">
                       <a
-                        href={`/projects/${
-                          projectType == "Commercial"
-                            ? "commercial"
-                            : "residential"
-                        }/${project?.attributes?.projectUrl}`}
+                        href={`/projects/${projectType == "Commercial"
+                          ? "commercial"
+                          : "residential"
+                          }/${project?.attributes?.projectUrl}`}
                       >
                         <Buttons text={"Know More"} />
                       </a>
