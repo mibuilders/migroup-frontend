@@ -86,7 +86,7 @@ const JobCard = ({ content }) => {
       jobLocation: selectedOpening?.attributes?.Location || "",
       jobType: selectedOpening?.attributes?.Job_Type || "",
     };
-    console.log("formvalue", formvalue);
+    // console.log("formvalue", formvalue);
     uploadFormData.append("data", JSON.stringify(formvalue));
     uploadFormData.append(
       "files.Resume",
@@ -148,7 +148,7 @@ const JobCard = ({ content }) => {
                   content?.attributes?.jobicon?.data?.attributes
                     ?.alternativeText
                     ? content?.attributes?.jobicon?.data?.attributes
-                        ?.alternativeText
+                      ?.alternativeText
                     : "icon"
                 }
                 height={1000}
@@ -179,10 +179,9 @@ const JobCard = ({ content }) => {
               content?.attributes?.jobtags.map((item, index) => (
                 <p
                   key={index}
-                  className={`text-black Alata lg:text-[0.95vw] relative ${
-                    index !== content?.attributes?.jobtags.length - 1 &&
+                  className={`text-black Alata lg:text-[0.95vw] relative ${index !== content?.attributes?.jobtags.length - 1 &&
                     "after:content-['']  after:absolute after:h-full after:w-[2px] after:bg-primary-color after:opacity-[12%] after:-right-[0.834vw]"
-                  }`}
+                    }`}
                 >
                   {item?.text}
                 </p>

@@ -10,7 +10,7 @@ import axios from "axios";
 import qs from "qs";
 
 const Footer = ({
-  
+
 }) => {
 
   const router = useRouter();
@@ -48,7 +48,7 @@ const Footer = ({
       const response = await axios.get(endpoint);
       const data = response || [];
 
-      
+
       setCurrData(data?.data?.data);
       return data
     } catch (error) {
@@ -57,7 +57,7 @@ const Footer = ({
     }
   };
   useEffect(() => {
-    
+
     const fetchData = async () => {
       const data = await fetchTypologyData()
       console.log(data, "foot data")
@@ -65,9 +65,9 @@ const Footer = ({
     fetchData()
     // const data = await fetchTypologyData();
   }, [router.isReady, router.query]);
-  
+
   // You can use `currData` below if needed
-  console.log( currData, "footer data");
+  // console.log( currData, "footer data");
 
 
 
@@ -92,7 +92,7 @@ const Footer = ({
                   footerData?.attributes?.Logo?.data?.attributes
                     ?.alternativeText
                     ? footerData?.attributes?.Logo?.data?.attributes
-                        ?.alternativeText
+                      ?.alternativeText
                     : "Logo"
                 }
                 className="cursor-pointer"
@@ -182,7 +182,7 @@ const Footer = ({
                   return (
                     <li key={index}>
                       <a
-                         href={`/${link?.attributes?.slug}`}
+                        href={`/${link?.attributes?.slug}`}
                         className="hover:underline cursor-pointer"
                       >
                         {link.attributes?.Title}

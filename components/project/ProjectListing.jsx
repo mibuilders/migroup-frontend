@@ -9,6 +9,10 @@ import Buttons from "../common/Button";
 import { motion } from "framer-motion";
 import { fadeIn } from "../common/Animation";
 
+const allowedTitles = [
+  "MI Gordon",
+  "MI Retreat Center - II",
+];
 const ProjectListing = ({ title, projectType }) => {
   const dispatch = useDispatch();
   const ref = useRef(null);
@@ -57,7 +61,15 @@ const ProjectListing = ({ title, projectType }) => {
     data &&
     data?.filter((project) => project?.attributes?.projectStatus === activeTab);
 
-  console.log(filteredProjects, "filter");
+  if (filteredProjects) {
+    filteredProjects.sort((a, b) => {
+      const hasButton = (p) =>
+        ["Ongoing", "Completed"].includes(activeTab) &&
+        allowedTitles.includes(p?.attributes?.projectTitle);
+      return (hasButton(b) ? 1 : 0) - (hasButton(a) ? 1 : 0);
+    });
+  }
+  // console.log(filteredProjects, "filter");
   return (
     <div className="bg-primary-color py-[40px] md:py-20">
       {/* Tabs Section */}
@@ -183,18 +195,21 @@ const ProjectListing = ({ title, projectType }) => {
                       {project?.attributes?.projectListing?.shortDescription}
                     </p>
                   )}
-                  {["Ongoing", "Completed"].includes(activeTab) && (
-                    <div className="pt-10">
-                      <a
-                        href={`/projects/${projectType == "Commercial"
-                          ? "commercial"
-                          : "residential"
-                          }/${project?.attributes?.projectUrl}`}
-                      >
-                        <Buttons text={"Know More"} />
-                      </a>
-                    </div>
-                  )}
+                  {["Ongoing", "Completed"].includes(activeTab) &&
+                    allowedTitles.includes(
+                      project?.attributes?.projectTitle
+                    ) && (
+                      <div className="pt-10">
+                        <a
+                          href={`/projects/${projectType == "Commercial"
+                            ? "commercial"
+                            : "residential"
+                            }/${project?.attributes?.projectUrl}`}
+                        >
+                          <Buttons text={"Know More"} />
+                        </a>
+                      </div>
+                    )}
                 </div>
               </div>
             </div>

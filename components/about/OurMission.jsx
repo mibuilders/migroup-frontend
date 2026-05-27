@@ -4,7 +4,7 @@ import Image from "next/image";
 import { fadeIn } from "../common/Animation";
 
 const OurMission = ({ vision, mission }) => {
-  console.log({ vision });
+  // console.log({ vision });
   // const [isMission, setIsMission] = useState(true);
   // const controls = useAnimation();
   // const textControls = useAnimation();

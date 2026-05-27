@@ -4,7 +4,7 @@ import React from "react";
 import { cleanImage } from "../imageHandling";
 
 const BlogCard = ({ data }) => {
-  console.log("data", data);
+  // console.log("data", data);
   return (
     <a href={`/blogs/${data?.attributes?.slug}`}>
       <div className="relative md:h-[30rem]  lg:min-h-[33.021vw] flex justify-center items-center overflow-hidden group">
@@ -29,7 +29,7 @@ const BlogCard = ({ data }) => {
           alt={
             data?.attributes?.thumbnailimage?.data?.attributes?.alternativeText
               ? data?.attributes?.thumbnailimage?.data?.attributes
-                  ?.alternativeText
+                ?.alternativeText
               : "blog image"
           }
         />

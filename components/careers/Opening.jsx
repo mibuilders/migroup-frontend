@@ -22,15 +22,15 @@ const Opening = ({ jobopening, jobs }) => {
     setDepartments(["All", ...uniqueDepartments]);
   }, [jobs]);
 
-  console.log("activeTab", activeTab);
+  // console.log("activeTab", activeTab);
   const filteredJobs =
     activeTab === "All"
       ? jobs
       : jobs.filter(
-          (job) =>
-            job?.attributes?.job_department?.data?.attributes?.Title ===
-            activeTab
-        );
+        (job) =>
+          job?.attributes?.job_department?.data?.attributes?.Title ===
+          activeTab
+      );
   const jobData = [
     {
       icon: "/Images/icons/jobcard1.svg",
@@ -117,11 +117,10 @@ const Opening = ({ jobopening, jobs }) => {
                   departments?.map((item, index) => (
                     <p
                       key={index}
-                      className={`cursor-pointer Alata lg:text-[0.938vw] text-[1rem] ${
-                        activeTab === item
+                      className={`cursor-pointer Alata lg:text-[0.938vw] text-[1rem] ${activeTab === item
                           ? "text-[#AD843E] underline"
                           : "text-black"
-                      }`}
+                        }`}
                       onClick={() => setActiveTab(item)}
                     >
                       {item}

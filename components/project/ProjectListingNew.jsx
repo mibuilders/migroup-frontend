@@ -9,6 +9,10 @@ import Buttons from "../common/Button";
 import { motion } from "framer-motion";
 import { fadeIn } from "../common/Animation";
 
+const allowedTitles = [
+  "MI Gordon",
+  "MI Retreat Center - II",
+];
 const ProjectListingNew = ({ title, projectType }) => {
   const dispatch = useDispatch();
   const ref = useRef(null);
@@ -59,9 +63,17 @@ const ProjectListingNew = ({ title, projectType }) => {
       ?.filter((project) => project?.attributes?.projectStatus === activeTab)
       ?.slice(); // Create a new array before reversing
 
-  if (activeTab === "Completed") {
-    filteredProjects.reverse(); // Reverse only for "Completed" tab
+  if (filteredProjects) {
+    filteredProjects.sort((a, b) => {
+      const hasButton = (p) =>
+        ["Ongoing", "Completed"].includes(activeTab) &&
+        allowedTitles.includes(p?.attributes?.projectTitle);
+      return (hasButton(b) ? 1 : 0) - (hasButton(a) ? 1 : 0);
+    });
   }
+  // if (activeTab === "Completed") {
+  //   filteredProjects.reverse(); // Reverse only for "Completed" tab
+  // }
 
   return (
     <div className="bg-primary-color py-[40px] md:py-32">
@@ -130,18 +142,21 @@ const ProjectListingNew = ({ title, projectType }) => {
                 <h5 className="text-secondary-color lg:text-[2.083vw] text-center mt-3 lg:mt-[1.25vw]">
                   {project?.attributes?.projectTitle}
                 </h5>
-                {["Ongoing", "Completed"].includes(activeTab) && (
-                  <div className=" lg:mt-[1.25vw] mt-3 flex justify-center">
-                    <a
-                      href={`/projects/${projectType == "Commercial"
-                        ? "commercial"
-                        : "residential"
-                        }/${project?.attributes?.projectUrl}`}
-                    >
-                      <Buttons text={"Know More"} />
-                    </a>
-                  </div>
-                )}
+                {["Ongoing", "Completed"].includes(activeTab) &&
+                  allowedTitles.includes(
+                    project?.attributes?.projectTitle
+                  ) && (
+                    <div className=" lg:mt-[1.25vw] mt-3 flex justify-center">
+                      <a
+                        href={`/projects/${projectType == "Commercial"
+                          ? "commercial"
+                          : "residential"
+                          }/${project?.attributes?.projectUrl}`}
+                      >
+                        <Buttons text={"Know More"} />
+                      </a>
+                    </div>
+                  )}
               </div>
             ))}
         </div>
