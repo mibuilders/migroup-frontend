@@ -11,7 +11,8 @@ import { fadeIn } from "../common/Animation";
 
 const allowedTitles = [
   "MI Gordon",
-  "MI Retreat Center - II",
+  "MI Royal Court - I",
+  "MI Retreat Center",
 ];
 const ProjectListingNew = ({ title, projectType }) => {
   const dispatch = useDispatch();
