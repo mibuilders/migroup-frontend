@@ -13,6 +13,7 @@ const allowedTitles = [
   "MI Gordon",
   "MI Royal Court - I",
   "MI Retreat Center",
+  "MI Retreat Center - II",
 ];
 const ProjectListingNew = ({ title, projectType }) => {
   const dispatch = useDispatch();
